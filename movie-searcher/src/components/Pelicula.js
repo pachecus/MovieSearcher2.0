@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
 import YouTube from 'react-youtube';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import config from '../files/config.json'
-=======
->>>>>>> 57d443f2 (Navbar css)
-=======
->>>>>>> 7b8a86d808ca0b3b1a96da107469dd1e8a2c1319
 
 export const Pelicula = (props) => {
   const [trailerUrl, setTrailerUrl] = useState(null); 
@@ -24,15 +17,7 @@ export const Pelicula = (props) => {
   useEffect(() => {
     async function fetchTrailer() {
       try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        const apiKey = config.apiKey;
-=======
         const apiKey = process.env.REACT_APP_API_KEY;
->>>>>>> 57d443f2 (Navbar css)
-=======
-        const apiKey = process.env.REACT_APP_API_KEY;
->>>>>>> 7b8a86d808ca0b3b1a96da107469dd1e8a2c1319
         const movieId = props.infoPelicula.id; 
         const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
 

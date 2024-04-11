@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import config from '../files/config.json'
-=======
 import { ErrorComponent } from "./ErrorComponent";
->>>>>>> 57d443f2 (Navbar css)
-=======
-import { ErrorComponent } from "./ErrorComponent";
->>>>>>> 7b8a86d808ca0b3b1a96da107469dd1e8a2c1319
 
 export const Home = () => {
     const itemsMostrados = 9;
@@ -31,16 +23,8 @@ export const Home = () => {
             const options = {
                 method: 'GET',
                 headers: {
-                  accept: "application/json",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  Authorization: config.authorizationToken
-=======
-                Authorization: process.env.REACT_APP_AUTH_TOKEN
->>>>>>> 57d443f2 (Navbar css)
-=======
-                Authorization: process.env.REACT_APP_AUTH_TOKEN
->>>>>>> 7b8a86d808ca0b3b1a96da107469dd1e8a2c1319
+                    accept: "application/json",
+                    Authorization: process.env.REACT_APP_AUTH_TOKEN
                 }
               };
             
