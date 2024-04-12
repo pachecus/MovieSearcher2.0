@@ -125,7 +125,6 @@
 
 .login-container {
   font-size: x-large;
-  margin-top: 3%;
   margin-left: 20%;
   margin-right: 20%;
   border: 2px solid gray;
@@ -313,7 +312,10 @@ width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px;
+  flex-direction: column;
+  /* padding: 80px; */
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .contacto-container{
@@ -321,6 +323,7 @@ width: 100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .contacto-form {
