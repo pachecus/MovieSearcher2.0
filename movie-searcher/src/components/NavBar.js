@@ -1,11 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../files/logo.png'
 
-export const NavBar = () => {
+export const NavBar = (props) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate('/');
+    }
+    if(!props.showNavBar){
+        return null;
     }
 
     return(
