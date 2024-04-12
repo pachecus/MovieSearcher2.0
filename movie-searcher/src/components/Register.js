@@ -5,35 +5,35 @@ export const Register = () => {
 
     return(
         <div className="register">
-            <h1>Crear Cuenta</h1>
+            <h1>Create Account</h1>
             <div className="register-container">
                 <form className="register-form" onSubmit={handleForm}>
                     <div>
-                        <label style={{color: "white"}}> Nombre:         
+                        <label style={{color: "white"}}> Name:         
                             <input type="text"></input>
                         </label>
                     </div>
                     <div>
-                        <label style={{color: "white"}}> Correo:         
+                        <label style={{color: "white"}}> Mail:         
                             <input type="text"></input>
                         </label>
                     </div>
                     <div>
-                        <label style={{color: "white"}}> Usuario:         
+                        <label style={{color: "white"}}> Username:         
                             <input type="text"></input>
                         </label>
                     </div>
                     <div>
-                        <label style={{color: "white"}} > Contraseña:         
+                        <label style={{color: "white"}} > Password:         
                             <input type="text"></input>
                         </label>
                     </div>
                     <div>
-                        <label style={{color: "white"}}> Repetir Contraseña:         
+                        <label style={{color: "white"}}> Repeat password:         
                             <input type="text"></input>
                         </label>
                     </div>
-                    <button type="submit"> Registrarse </button>
+                    <button type="submit"> Submit </button>
                 </form>
             
             </div>

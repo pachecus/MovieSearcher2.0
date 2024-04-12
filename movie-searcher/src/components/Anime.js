@@ -18,13 +18,13 @@
           </div>
           <div className="item-details">
             <div className="item-info">
-              <p>Año: {props.infoAnime.aired.prop.from.year}</p>
-              <p>Géneros: {props.infoAnime.genres.map(genre => genre.name).join(', ')}</p>
+              <p>Year: {props.infoAnime.aired.prop.from.year}</p>
+              <p>Generes: {props.infoAnime.genres.map(genre => genre.name).join(', ')}</p>
               <p>Rating: {props.infoAnime.rating}</p>
-              <p>Sinopsis: {props.infoAnime.synopsis}</p>
+              <p>Synopsis: {props.infoAnime.synopsis}</p>
             </div>
             <div className="trailer-container">
-              {!props.infoAnime.trailer.youtube_id ? <p>No hay trailer disponible</p> : 
+              {!props.infoAnime.trailer.youtube_id ? <p>Trailer not available</p> : 
               <YouTube
                 videoId={props.infoAnime.trailer.youtube_id}
                 opts={options}

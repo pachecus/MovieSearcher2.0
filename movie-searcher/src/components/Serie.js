@@ -45,14 +45,14 @@ export const Serie = (props) => {
         </div>
         <div className="item-details">
           <div className="item-info">
-            <p>Año: {props.infoSerie.first_air_date}</p>
-            <p>Generos: {props.infoSerie.genres.join(', ')}</p> 
+            <p>Year: {props.infoSerie.first_air_date}</p>
+            <p>Generes: {props.infoSerie.genres.join(', ')}</p> 
             <p>Rating: {props.infoSerie.vote_average}</p>
-            <p>Lenguaje: {props.infoSerie.original_language.toUpperCase()}</p>
-            <p>Sinopsis: {props.infoSerie.overview}</p>
+            <p>Language: {props.infoSerie.original_language.toUpperCase()}</p>
+            <p>Synopsis: {props.infoSerie.overview}</p>
           </div>
           <div className="trailer-container">
-            {trailerUrl === 'no_trailer' ? <p>No hay tráiler disponible</p> :           
+            {trailerUrl === 'no_trailer' ? <p>Trailer not available</p> :           
             <YouTube
               videoId={trailerUrl !== 'no_trailer' ? trailerUrl : null}
               opts={options}

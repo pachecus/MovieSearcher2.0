@@ -139,25 +139,25 @@ export const Home = () => {
         if (filtro === "anime"){
             itemsList = animesData;
             if(itemsList.length === 0) {
-                message = "Ooops, parece que no hay Animes en este momento, intente de nuevo mas tarde";
+                message = "Ooops, looks like there are no Animes at the moment, try again later";
                 return(<ErrorComponent errorMessage={message} home={false}/>);
             }
         } else if (filtro === "peliculas"){
             itemsList = moviesData;
             if(itemsList.length === 0) {
-                message = "Ooops, parece que no hay Peliculas en este momento, intente de nuevo mas tarde";
+                message = "Ooops, looks like there are no Movies at the moment, try again later";
                 return(<ErrorComponent errorMessage={message} home={false}/>);
             }
         } else if (filtro === "series"){
             itemsList = tvShowsData;
             if(itemsList.length === 0) {
-                message = "Ooops, parece que no hay Series en este momento, intente de nuevo mas tarde";
+                message = "Ooops, looks like there are no Series at the moment, try again later";
                 return(<ErrorComponent errorMessage={message} home={false}/>);
             }
         } else {
             itemsList = getSortedData();
             if(itemsList.length === 0) {
-                message = "Ooops, parece que no hay entretenimiento en este momento, intente de nuevo mas tarde";
+                message = "Ooops, looks like there is no Entertainment at the moment, try again later";
                 return(<ErrorComponent errorMessage={message} home={true}/>);
             }
         }
@@ -172,7 +172,7 @@ export const Home = () => {
                 <div className="filter-options">
                     <button onClick={() => setFiltro("anime")}>Animes</button>
                     <button onClick={() => setFiltro("series")}>Series</button>
-                    <button onClick={() => setFiltro("peliculas")}>Peliculas</button>
+                    <button onClick={() => setFiltro("peliculas")}>Movies</button>
                 </div>
             </div>
             <div className="items-container">
@@ -196,7 +196,7 @@ export const Home = () => {
             ))}
             </div>
             <div className="more-info">
-                <button onClick={() => {setItemsMostradosActualmente(itemsMostradosActualmente + itemsMostrados)}}> Ver mas </button>
+                <button onClick={() => {setItemsMostradosActualmente(itemsMostradosActualmente + itemsMostrados)}}> Show more </button>
             </div>
         </div>
     );

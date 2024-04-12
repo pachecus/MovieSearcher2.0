@@ -15,8 +15,8 @@ export const NavBar = () => {
                     <img src={logo} alt="Logo" className='logo' onClick={handleClick}/>
                 </div>
                 <div className='links-container'>
-                    <Link to="/" className='nav-link' >Inicio</Link>
-                    <Link to="Contacto" className='nav-link'>Contacto</Link> 
+                    <Link to="/" className='nav-link' >Home</Link>
+                    <Link to="Contacto" className='nav-link'>Contact</Link> 
                 </div>
                 <div className='user-nav-links'>
                     <Link to="Login" className='nav-link'>Login</Link>

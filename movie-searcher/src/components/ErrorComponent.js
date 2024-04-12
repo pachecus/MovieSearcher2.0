@@ -10,7 +10,7 @@ export const ErrorComponent = (props) => {
     return (
         <div className="error-container">
             <h1 style={{color: "white"}}>{props.errorMessage}</h1>
-            {!props.home && <button onClick={handleClick}>Volver</button>}
+            {!props.home && <button onClick={handleClick}>Go Back</button>}
         </div>
     );
 }

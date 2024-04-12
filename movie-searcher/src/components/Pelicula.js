@@ -46,14 +46,14 @@ export const Pelicula = (props) => {
         </div>
         <div className="item-details">
           <div className="item-info">
-            <p>Año: {props.infoPelicula.release_date}</p>
-            <p>Generos: {props.infoPelicula.genres ? props.infoPelicula.genres.join(', ') : ''}</p>
+            <p>Year: {props.infoPelicula.release_date}</p>
+            <p>Generes: {props.infoPelicula.genres ? props.infoPelicula.genres.join(', ') : ''}</p>
             <p>Rating: {props.infoPelicula.vote_average}</p>
-            <p>Lenguaje: {props.infoPelicula.original_language.toUpperCase()}</p>
-            <p>Sinopsis: {props.infoPelicula.overview}</p>
+            <p>Language: {props.infoPelicula.original_language.toUpperCase()}</p>
+            <p>Synopsis: {props.infoPelicula.overview}</p>
           </div>
           <div className="trailer-container">
-            {trailerUrl === 'no_trailer' ? <p>No hay trailer disponible</p>:  
+            {trailerUrl === 'no_trailer' ? <p>Trailer not available</p>:  
               <YouTube
                 videoId={trailerUrl}
                 opts={options}
