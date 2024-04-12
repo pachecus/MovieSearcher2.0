@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 export const Login = () => {
     const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/Login');
+    }
 
     const handleForm = () => {
-        navigate('/Login');
+
     }
     return(
         <div className="login">
@@ -14,7 +17,7 @@ export const Login = () => {
                 <form onSubmit={handleForm} className="login-form">
                     <input type="text" placeholder="Usuario o email"></input>
                     <input type="password"></input>
-                    <button type="submit">Login</button>
+                    <button type="submit" onClick={handleClick}>Login</button>
                 </form>
             </div>
         </div>
