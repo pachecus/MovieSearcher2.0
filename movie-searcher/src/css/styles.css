@@ -274,17 +274,6 @@ width: 100px;
   border: 2px solid gray;
   padding: 20px;
 }
-
-.contacto {
-  display: flex;
-  justify-content: center;
-}
-
-/* Este es temporal, se tiene que ir cuando termine la pagina */
-.contacto h1 {
-  color: var(--color-userTitles);
-  font-size: 50px;
-}
   
 .home-options input {
   width: 40%;
@@ -310,6 +299,14 @@ width: 100px;
 
 .home-options button:hover {
   background-color: lightgray;
+}
+
+/* Este es temporal, se tiene que ir cuando termine la pagina */
+.contacto h1 {
+  color: var(--color-userTitles);
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .contacto {
