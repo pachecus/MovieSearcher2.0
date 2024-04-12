@@ -162,7 +162,7 @@ export const Home = () => {
             }
         }
     }else{
-        return(<h1 style={{color: "white", fontSize: "xx-large"}}>Cargando...</h1>);
+        return(<h1 style={{color: "white", fontSize: "xx-large"}}>Loading...</h1>);
     }
 
     return(
