@@ -8,7 +8,7 @@ export const Register = () => {
             <h1>Create Account</h1>
             <div className="register-container">
                 <form className="register-form" onSubmit={handleForm}>
-                    <h1>Estoy trabajando en en esta pagina, pronto estara disponible</h1>
+                    <h1>I'm building out this specific feature on the site, it'll be available shortly.</h1>
                     {/* <div>
                         <label style={{color: "white"}}> Name:         
                             <input type="text"></input>
