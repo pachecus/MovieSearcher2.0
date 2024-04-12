@@ -8,7 +8,8 @@ export const Register = () => {
             <h1>Create Account</h1>
             <div className="register-container">
                 <form className="register-form" onSubmit={handleForm}>
-                    <div>
+                    <h1>Estoy trabajando en en esta pagina, pronto estara disponible</h1>
+                    {/* <div>
                         <label style={{color: "white"}}> Name:         
                             <input type="text"></input>
                         </label>
@@ -33,7 +34,7 @@ export const Register = () => {
                             <input type="text"></input>
                         </label>
                     </div>
-                    <button type="submit"> Submit </button>
+                    <button type="submit"> Submit </button> */}
                 </form>
             
             </div>
