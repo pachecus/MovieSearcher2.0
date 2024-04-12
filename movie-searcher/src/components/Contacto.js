@@ -1,9 +1,9 @@
 import '../css/styles.css'
 
 export const Contacto = () => {
-    const handleClick = () => {
+    // const handleClick = () => {
 
-    }
+    // }
 
     return (
         <div className="contacto">
