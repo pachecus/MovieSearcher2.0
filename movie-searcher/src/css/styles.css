@@ -279,6 +279,12 @@ width: 100px;
   display: flex;
   justify-content: center;
 }
+
+/* Este es temporal, se tiene que ir cuando termine la pagina */
+.contacto h1 {
+  color: var(--color-userTitles);
+  font-size: 50px;
+}
   
 .home-options input {
   width: 40%;
