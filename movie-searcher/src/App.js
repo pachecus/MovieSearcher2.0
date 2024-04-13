@@ -10,15 +10,25 @@ import { Contacto } from './components/Contacto';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { ErrorComponent } from './components/ErrorComponent';
+import { Mobile } from './components/Mobile';
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <AppRoutes />
-      </Router>
-    </div>
-  );
+  let navegador = navigator.userAgent;
+  if (navegador.match(/Android/i) || navegador.match(/webOS/i) || navegador.match(/iPhone/i) || navegador.match(/iPad/i) || navegador.match(/iPod/i) || navegador.match(/BlackBerry/i) || navegador.match(/Windows Phone/i)) {
+    return(
+      <div className="App">
+        <Mobile />
+      </div>
+    );
+  }else{
+    return (
+      <div className="App">
+        <Router>
+          <AppRoutes />
+        </Router>
+      </div>
+    );
+  }
 }
 
 function AppRoutes() {

@@ -1,21 +1,38 @@
-import '../css/styles.css'
+import '../css/styles.css';
+import emailjs from 'emailjs-com';
 
 export const Contacto = () => {
-    // const handleClick = () => {
-
-    // }
+    function handleSubmit(e) {
+        e.preventDefault();
+        emailjs.sendForm('service_adwzx7h', 'template_ldaoz0q', e.target, 'J5V_y_se_P4zxmSDl')
+            .then((res) => {
+                alert("Se ha enviado correctamente");
+            })
+            .catch((error) => {
+                console.error('Error sending email:', error);
+                alert("Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.");
+            });
+    }
 
     return (
         <div className="contacto">
             <h1>Contact</h1>
-            <form type='submit' className='contacto-form'>
+            <form className='contacto-form' onSubmit={handleSubmit}>
                 <div className='contacto-container'>
-                    {/* <input type="email" placeholder="juan@gmail.com" />
-                    <textarea type="text" placeholder='Write your message here...' rows={10}/>
-                    <button type='submit'>Send</button> */}
-                    <h1>I'm building out this specific feature on the site, it'll be available shortly.</h1>
+                    <div className='contact-input'>
+                        <label style={{color: "white"}}>Name:
+                            <input type='text' placeholder='Pedro' id='name' name='name' />
+                        </label>
+                    </div>
+                    <div className='contact-input'>
+                        <label style={{color: "white"}}>Mail:
+                            <input type="email" placeholder="pedro@gmail.com" id='mail' name='mail' />
+                        </label>
+                    </div>
+                    <textarea placeholder='Write your message here...' rows={10} id='message' name='message' />
+                    <button type='submit'>Send</button>
                 </div>
             </form>
         </div>
     );
-}
+};
