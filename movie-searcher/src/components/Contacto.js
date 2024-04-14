@@ -9,9 +9,9 @@ export const Contacto = () => {
                 alert("Se ha enviado correctamente");
             })
             .catch((error) => {
-                console.error('Error sending email:', error);
                 alert("Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.");
             });
+        
     }
 
     return (
