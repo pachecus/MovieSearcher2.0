@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ErrorComponent } from "./ErrorComponent";
+// import { useQuery } from "@tanstack/react-query";
+// import axios from 'axios';
 
 export const Home = () => {
     const itemsMostrados = 9;

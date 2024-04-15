@@ -11,8 +11,10 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { ErrorComponent } from './components/ErrorComponent';
 import { Mobile } from './components/Mobile';
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
+  // const client = new QueryClient();
   let navegador = navigator.userAgent;
   if (navegador.match(/Android/i) || navegador.match(/webOS/i) || navegador.match(/iPhone/i) || navegador.match(/iPad/i) || navegador.match(/iPod/i) || navegador.match(/BlackBerry/i) || navegador.match(/Windows Phone/i)) {
     return(
@@ -23,9 +25,11 @@ function App() {
   }else{
     return (
       <div className="App">
-        <Router>
-          <AppRoutes />
-        </Router>
+        {/* <QueryClientProvider client={client}> */}
+          <Router>
+            <AppRoutes />
+          </Router>
+          {/* </QueryClientProvider> */}
       </div>
     );
   }
