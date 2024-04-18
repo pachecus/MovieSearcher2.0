@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../files/logo.png'
+import styles from './NavBar.module.css';
 
 export const NavBar = (props) => {
     const navigate = useNavigate();
@@ -12,18 +13,18 @@ export const NavBar = (props) => {
     }
 
     return(
-        <div className='nav-bar'>
-            <div className='navandlogo'>
-                <div className='logo-container'>
+        <div className={styles.nav_bar}>
+            <div className={styles.navandlogo}>
+                <div className={styles.logo_container}>
                     <img src={logo} alt="Logo" className='logo' onClick={handleClick}/>
                 </div>
-                <div className='links-container'>
-                    <Link to="/" className='nav-link' >Home</Link>
-                    <Link to="Contacto" className='nav-link'>Contact</Link> 
+                <div className={styles.links_container}>
+                    <Link to="/" className={styles.nav_link} >Home</Link>
+                    <Link to="Contacto" className={styles.nav_link}>Contact</Link> 
                 </div>
-                <div className='user-nav-links'>
-                    <Link to="Login" className='nav-link'>Login</Link>
-                    <Link to="Register" className='nav-link'>Register</Link>
+                <div className={styles.user_nav_links}>
+                    <Link to="Login" className={styles.nav_link}>Login</Link>
+                    <Link to="Register" className={styles.nav_link}>Register</Link>
                 </div>
             </div>
         </div>

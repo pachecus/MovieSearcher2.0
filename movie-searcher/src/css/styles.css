@@ -6,71 +6,6 @@
   --color-buttons: darkgray;
 }
 
-.nav-bar{
-  font-size: xx-large;
-  background-color: var(--color-back-navbar);
-  height: 100px;
-  margin: -.5%;
-}
-
-.nav-link{
-  text-decoration: none;
-  color: var(--color-links-navbar);
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: bold;
-}
-
-.nav-link:hover {
-  background-color:  var(--color-links-navbar);
-  color:var(--color-back-navbar);
-}
-
-.links-container {
-  gap: 20px;
-  width:33.3%;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.navandlogo {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-}
-
-.user-nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 33.3%;
-  height: 100px;
-  gap: 20px;
-  padding-right: 3%;
-}
-
-.nav-bar:last-child {
-  margin-left: 0;
-}
-
-.logo-container {
-  width:33.3%;
-  height: 100px;
-  cursor: pointer;
-  text-align: left;
-  padding-left: 3%;
-  align-items: center;
-  padding-top: .90%;
-  height: auto;
-}
-
-.logo-container img{
-  max-width: 80px;
-  height: auto;
-}
-
 .register h1 {
   color: var(--color-userTitles);
   font-size: 50px;
@@ -220,16 +155,19 @@
   width: 100%; 
 }
 
+/* ya se puede sacar */
 .item img {
   width: 100%; 
   height: auto; 
 }
 
+/* ya se puede sacar */
 .item h1 {
   margin-bottom: 10px;
   margin-top: 0; 
 }
 
+/* ya se puede sacar */
 .item-image {
   min-width: 380px;
   max-width: 380px;
@@ -242,6 +180,7 @@
   background-color: var(--color-items-containers);
 }
 
+/* ya se puede sacar */
 .item-info {
   margin-left: 20px;
   flex: 1;
@@ -263,6 +202,7 @@ margin-top: 5px;
 width: 100px; 
 } */
 
+/* ya se puede sacar */
 .item-details {
   text-align: left;
   margin-top: 2%;

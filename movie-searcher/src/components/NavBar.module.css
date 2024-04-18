@@ -1,0 +1,64 @@
+.nav_bar{
+    font-size: xx-large;
+    background-color: var(--color-back-navbar);
+    height: 100px;
+    margin: -.5%;
+}
+
+.nav_bar:last-child {
+    margin-left: 0;
+}
+
+.navandlogo {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.logo_container {
+    width:33.3%;
+    height: 100px;
+    cursor: pointer;
+    text-align: left;
+    padding-left: 3%;
+    align-items: center;
+    padding-top: .90%;
+    height: auto;
+}
+
+.logo_container img{
+    max-width: 80px;
+    height: auto;
+}
+
+.links_container {
+    gap: 20px;
+    width:33.3%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.user_nav_links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 33.3%;
+    height: 100px;
+    gap: 20px;
+    padding-right: 3%;
+}
+
+.nav_link{
+    text-decoration: none;
+    color: var(--color-links-navbar);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.nav_link:hover {
+    background-color:  var(--color-links-navbar);
+    color:var(--color-back-navbar);
+}

@@ -1,0 +1,17 @@
+.item_details {
+    text-align: left;
+    margin-top: 2%;
+    margin-left: 1%;
+    display: block;
+    color:white;
+    font-size: x-large;
+    border: 2px solid gray;
+    padding: 20px;
+    background-color: var(--color-items-containers);
+}
+
+.item_info {
+    margin-left: 20px;
+    flex: 1;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

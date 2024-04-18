@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import YouTube from 'react-youtube';
 import { useLocation } from 'react-router-dom';
 import { fetchTrailer } from '../scripts/getTrailer'
+import { ItemPoster } from "../components/ItemPoster";
+import { ItemDetails } from "../components/ItemDetails";
 
 export const Serie = () => {
   const [trailerUrl, setTrailerUrl] = useState(null); 
@@ -10,14 +11,6 @@ export const Serie = () => {
 
   const location = useLocation();
   const item = location.state?.item; 
-
-  const options = {
-    height: "500",
-    width: "100%",
-    playerVars: {
-      autoplay: 0,
-    },
-  };
 
   useEffect(() => {
     const loadTrailer = async () => {
@@ -35,31 +28,12 @@ export const Serie = () => {
 
   if(!item) { return (<h1 style={{color: "white", fontSize: "xx-large"}}>Theres is no information available for this Show</h1>);}
   else{
+
     return (
       <div className="item-container">
         <div className="item">
-          <div className="item-image">
-            <h1>{item.name}</h1>
-            <img src={`${baseURL}${posterSize}${item.poster_path}`} alt={item.name} />
-          </div>
-          <div className="item-details">
-            <div className="item-info">
-              <p>Year: {item.first_air_date}</p>
-              <p>Generes: {item.genres.join(', ')}</p> 
-              <p>Rating: {item.vote_average}</p>
-              <p>Language: {item.original_language.toUpperCase()}</p>
-              <p>Synopsis: {item.overview}</p>
-            </div>
-            <div className="trailer-container">
-              {trailerUrl === 'no_trailer' ? <p>Trailer not available</p> :           
-              <YouTube
-                videoId={trailerUrl !== 'no_trailer' ? trailerUrl : null}
-                opts={options}
-              />}
-            </div>
-            {/* <div className="rating-container">
-            </div> */}
-          </div>
+          <ItemPoster itemTitle={item.name} itemImage={`${baseURL}${posterSize}${item.poster_path}`}/>
+          <ItemDetails year={item.first_air_date} genres={item.genres} rating={item.vote_average} languaje={item.original_language.toUpperCase()} synopsis={item.overview} trailerUrl={trailerUrl}/>
         </div>
       </div>
     );
