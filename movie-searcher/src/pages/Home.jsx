@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ErrorComponent } from "./ErrorComponent";
-// import { useQuery } from "@tanstack/react-query";
-// import axios from 'axios';
+import { ErrorComponent } from "./ErrorPage";
+import { getTvShowsData, getMoviesData, getAnimesData } from '../scripts/getEntertainment';
 
 export const Home = () => {
     const itemsMostrados = 9;
@@ -15,97 +14,23 @@ export const Home = () => {
     const [dataLoaded, setDataLoaded] = useState(false);
 
     let navigate = useNavigate();
-    let itemsList;
 
     const baseURL = 'https://image.tmdb.org/t/p/';
     const posterSize = 'original';
     
     useEffect(() => {
-        async function retrieveMoviesAndSeries () {
-            const options = {
-                method: 'GET',
-                headers: {
-                    accept: "application/json",
-                    Authorization: process.env.REACT_APP_AUTH_TOKEN
-                }
-              };
-            
-            // Obtener Peliculas
-            try {
-                const moviesResponse = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
-                const moviesData = await moviesResponse.json();
-                setMoviesData(moviesData.results);
-        
-                const genresResponse = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
-                const genresData = await genresResponse.json();
-        
-                const genreMap = {};
-                genresData.genres.forEach(genre => {
-                    genreMap[genre.id] = genre.name;
-                });
-        
-                setMoviesData(prevData => prevData.map(movie => ({
-                    ...movie,
-                    genres: movie.genre_ids.map(genreId => genreMap[genreId])
-                })));
-            } catch (err) {
-                console.error(err);
-            }
-            
-            // Obtener Series
-            try {
-                const showsResponse = await fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc', options);
-                const showsData = await showsResponse.json();
-                setTvShowsData(showsData.results);
-        
-                const genresResponse = await fetch('https://api.themoviedb.org/3/genre/tv/list?language=en', options);
-                const genresData = await genresResponse.json();
-        
-                const genreMap = {};
-                genresData.genres.forEach(genre => {
-                    genreMap[genre.id] = genre.name;
-                });
-        
-                setTvShowsData(prevShowsData => {
-                    return prevShowsData.map(show => ({
-                        ...show,
-                        genres: show.genre_ids.map(genreId => genreMap[genreId])
-                    }));
-                });
-            } catch (err) {
-                console.error(err);
+        async function getData() {
+            try{
+            setTvShowsData(await getTvShowsData());
+            setMoviesData(await getMoviesData());
+            setAnimesData(await getAnimesData());
+            setDataLoaded(true);
+            }catch(error){
+                console.error('Error al cargar el tráiler:', error);
             }
         }
-
-        // Obtener Animes
-        async function retrieveAnimes () {
-            const url =  'https://api.jikan.moe/v4/top/anime';
-        
-            try {
-                const response = await fetch(url);
-                const result = await response.json();
-                setAnimesData(result.data)
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        const fetchData = async () => {
-            try {
-              await retrieveAnimes();
-              await retrieveMoviesAndSeries();
-              setDataLoaded(true);
-            } catch (error) {
-              console.error('Error al recuperar datos:', error);
-            }
-          };
-      
-          fetchData(); 
+        getData();
     }, [])
-
-    const searchMovie = (value) => {
-        setSearchedItem(value)
-    }
 
     const handleMovieClick = (item) => {
         let route;
@@ -122,7 +47,7 @@ export const Home = () => {
     }
 
     const handleTyping = (event) => {
-        searchMovie(event.target.value);
+        setSearchedItem(event.target.value);
         setItemsMostradosActualmente(itemsMostrados);
     }
 
@@ -137,6 +62,7 @@ export const Home = () => {
     };
 
     let message = "";
+    let itemsList;
     if(dataLoaded){
         if (filtro === "anime"){
             itemsList = animesData;

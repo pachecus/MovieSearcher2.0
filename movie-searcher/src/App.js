@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
-import { Home } from './components/Home';
-import { Pelicula } from './components/Pelicula';
-import { Serie } from './components/Serie';
-import { Anime } from './components/Anime';
+import { Home } from './pages/Home';
+import { Pelicula } from './pages/Pelicula';
+import { Serie } from './pages/Serie';
+import { Anime } from './pages/Anime';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { NavBar } from './components/NavBar';
-import { Contacto } from './components/Contacto';
-import { Login } from './components/Login';
-import { Register } from './components/Register';
-import { ErrorComponent } from './components/ErrorComponent';
-import { Mobile } from './components/Mobile';
+import { Contacto } from './pages/Contacto';
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { ErrorComponent } from './pages/ErrorPage';
+import { Mobile } from './pages/Mobile';
 // import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
@@ -46,35 +46,35 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to="/Home" />} /> {/* Para que la pagina de inicio sea Home */}
         <Route path="/Home" element={<Home />} />
         <Route path="/Contacto" element={<Contacto />} />
-        <Route path="/movie/:title" element={<DetallePelicula />} />
-        <Route path="/serie/:name" element={<DetalleSerie />} />
-        <Route path="/anime/:title" element={<DetalleAnime />} />
+        <Route path="/movie/:title" element={<Pelicula />} />
+        <Route path="/serie/:name" element={<Serie />} />
+        <Route path="/anime/:title" element={<Anime />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
-        <Route path="*" element={<Navigate to="/Error"/>}/>
         <Route path="/Error" element={<ErrorComponent errorMessage="Ooops, where are you going?" />} />
+        <Route path="*" element={<Navigate to="/Error"/>}/>
       </Routes>
     </>
   );
 }
 
-function DetallePelicula() {
-  const location = useLocation();
-  const item = location.state?.item; 
-  return <Pelicula infoPelicula={item} />;
-}
+// function DetallePelicula() {
+//   const location = useLocation();
+//   const item = location.state?.item; 
+//   return <Pelicula infoPelicula={item} />;
+// }
 
-function DetalleSerie() {
-  const location = useLocation();
-  const item = location.state?.item; 
-  return <Serie infoSerie={item} />;
-}
+// function DetalleSerie() {
+//   const location = useLocation();
+//   const item = location.state?.item; 
+//   return <Serie infoSerie={item} />;
+// }
 
-function DetalleAnime() {
-  const location = useLocation();
-  const item = location.state?.item; 
-  return <Anime infoAnime={item} />;
-}
+// function DetalleAnime() {
+//   const location = useLocation();
+//   const item = location.state?.item; 
+//   return <Anime infoAnime={item} />;
+// }
 
 export default App;
 
