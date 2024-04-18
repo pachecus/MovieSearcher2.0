@@ -98,9 +98,9 @@ export const Home = () => {
             <div className="home-options">
                 <input type="text" onChange={handleTyping}/>
                 <div className="filter-options">
-                    <button onClick={() => setFiltro("anime")}>Animes</button>
-                    <button onClick={() => setFiltro("series")}>Series</button>
-                    <button onClick={() => setFiltro("peliculas")}>Movies</button>
+                    <button onClick={() => {setFiltro("anime");setItemsMostradosActualmente(itemsMostrados);}}>Animes</button>
+                    <button onClick={() => {setFiltro("series");setItemsMostradosActualmente(itemsMostrados);}}>Series</button>
+                    <button onClick={() => {setFiltro("peliculas");setItemsMostradosActualmente(itemsMostrados);}}>Movies</button>
                 </div>
             </div>
             <div className="items-container">

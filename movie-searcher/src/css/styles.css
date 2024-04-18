@@ -16,7 +16,7 @@
   flex-direction: column;
   align-items: center;
   font-size: x-large;
-  padding: 80px;
+  padding: 80px;  
   border: 2px solid gray;
   margin-left: 20%;
   margin-right: 20%;
@@ -155,41 +155,9 @@
   width: 100%; 
 }
 
-/* ya se puede sacar */
 .item img {
   width: 100%; 
   height: auto; 
-}
-
-/* ya se puede sacar */
-.item h1 {
-  margin-bottom: 10px;
-  margin-top: 0; 
-}
-
-/* ya se puede sacar */
-.item-image {
-  min-width: 380px;
-  max-width: 380px;
-  color:white;
-  font-size: xx-large;
-  border: 2px solid gray;
-  margin: 2%;
-  padding: 15px;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: var(--color-items-containers);
-}
-
-/* ya se puede sacar */
-.item-info {
-  margin-left: 20px;
-  flex: 1;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-/* .rating-container {
-  margin-top: 10px; 
-  display: flex;
 }
 
 .rating-container p {
@@ -201,19 +169,6 @@
 margin-top: 5px; 
 width: 100px; 
 } */
-
-/* ya se puede sacar */
-.item-details {
-  text-align: left;
-  margin-top: 2%;
-  margin-left: 1%;
-  display: block;
-  color:white;
-  font-size: x-large;
-  border: 2px solid gray;
-  padding: 20px;
-  background-color: var(--color-items-containers);
-}
   
 .home-options input {
   width: 40%;
@@ -254,7 +209,6 @@ width: 100px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* padding: 80px; */
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -297,8 +251,6 @@ width: 100px;
 }
 
 .contacto input {
-  /* font-size: x-large; */
-
   width: 400px;
   margin-top: 3%;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -309,7 +261,6 @@ width: 100px;
   font-size: x-large;
   margin-top: 3%;
   width: 700px;
-  /* font-size: x-large; */
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
 }
