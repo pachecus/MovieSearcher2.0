@@ -31,7 +31,7 @@ export const Pelicula = () => {
       };
     }
     loadTrailer();
-  },{})
+  },[item])
 
 
   if(!item) { return (<h1 style={{color: "white", fontSize: "xx-large"}}>Theres is no information available for this Movie</h1>);}
