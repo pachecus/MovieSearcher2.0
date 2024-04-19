@@ -1,13 +1,16 @@
+// import { Button } from '../components/Button';
+import styles from './Register.module.css';
+
 export const Register = () => {
     const handleForm = () => {
 
     }
 
     return(
-        <div className="register">
+        <div className={styles.register}>
             <h1>Create Account</h1>
-            <div className="register-container">
-                <form className="register-form" onSubmit={handleForm}>
+            <div className={styles.register_container}>
+                <form className={styles.register_form} onSubmit={handleForm}>
                     <h1>I'm building out this specific feature on the site, it'll be available shortly.</h1>
                     {/* <div>
                         <label style={{color: "white"}}> Name:         
@@ -34,7 +37,7 @@ export const Register = () => {
                             <input type="text"></input>
                         </label>
                     </div>
-                    <button type="submit"> Submit </button> */}
+                    <Button text='Submit'/> */}
                 </form>
             </div>
         </div>

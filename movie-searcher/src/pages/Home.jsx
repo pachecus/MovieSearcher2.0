@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ErrorComponent } from "./ErrorPage";
 import { getTvShowsData, getMoviesData, getAnimesData } from '../scripts/getEntertainment';
+import { ItemHomePoster } from "../components/ItemHomePoster";
+import { FilterAndSearchBar } from "../components/FilterAndSearchBar";
+import styles from './Home.module.css';
+import { Button } from "../components/Button";
 
 export const Home = () => {
     const itemsMostrados = 9;
@@ -12,11 +15,6 @@ export const Home = () => {
     const [filtro, setFiltro] = useState("");
     const [itemsMostradosActualmente, setItemsMostradosActualmente] = useState(itemsMostrados);
     const [dataLoaded, setDataLoaded] = useState(false);
-
-    let navigate = useNavigate();
-
-    const baseURL = 'https://image.tmdb.org/t/p/';
-    const posterSize = 'original';
     
     useEffect(() => {
         async function getData() {
@@ -31,20 +29,6 @@ export const Home = () => {
         }
         getData();
     }, [])
-
-    const handleMovieClick = (item) => {
-        let route;
-        if (item.images && item.images.jpg && item.images.jpg.image_url) { 
-            route = `/anime/${encodeURIComponent(item.title)}`;
-        } else if (item.name) {
-            route = `/serie/${encodeURIComponent(item.name)}`;
-        } else if (item.title) {
-            route = `/movie/${encodeURIComponent(item.title)}`;
-        } else {
-            return;
-        }
-        navigate(route, { state: { item } });
-    }
 
     const handleTyping = (event) => {
         setSearchedItem(event.target.value);
@@ -94,16 +78,9 @@ export const Home = () => {
     }
 
     return(
-        <div className="home">
-            <div className="home-options">
-                <input type="text" onChange={handleTyping}/>
-                <div className="filter-options">
-                    <button onClick={() => {setFiltro("anime");setItemsMostradosActualmente(itemsMostrados);}}>Animes</button>
-                    <button onClick={() => {setFiltro("series");setItemsMostradosActualmente(itemsMostrados);}}>Series</button>
-                    <button onClick={() => {setFiltro("peliculas");setItemsMostradosActualmente(itemsMostrados);}}>Movies</button>
-                </div>
-            </div>
-            <div className="items-container">
+        <div className={styles.home}>
+            <FilterAndSearchBar setFiltro={setFiltro} setItemsMostradosActualmente={setItemsMostradosActualmente} itemsMostrados={itemsMostrados} handleTyping={handleTyping}/>
+            <div className={styles.items_container}>
             {
             itemsList
                     .filter(item =>
@@ -112,20 +89,10 @@ export const Home = () => {
                     )
                     .slice(0, itemsMostradosActualmente)
                     .map((item, index) => (
-                        <div className="item-poster" onClick={() => handleMovieClick(item)} key={index}>
-                            <h1>{item.title || item.name}</h1>
-                            {item.poster_path && (
-                                <img src={`${baseURL}${posterSize}${item.poster_path}`} alt={item.title || item.name} />
-                            )}
-                            {item.images && item.images.jpg && item.images.jpg.image_url && (
-                                <img src={item.images.jpg.image_url} alt={item.title} />
-                            )}
-                        </div>
+                        <ItemHomePoster item={item}/>
             ))}
             </div>
-            <div className="more-info">
-                <button onClick={() => {setItemsMostradosActualmente(itemsMostradosActualmente + itemsMostrados)}}> Show more </button>
-            </div>
+            <Button function={() => {setItemsMostradosActualmente(itemsMostradosActualmente + itemsMostrados)}} text="Show more"/>
         </div>
     );
 }

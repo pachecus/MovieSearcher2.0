@@ -1,3 +1,6 @@
+import { Button } from '../components/Button';
+import styles from './ErrorPage.module.css';
+
 import { useNavigate } from "react-router-dom";
 
 export const ErrorComponent = (props) => {
@@ -8,9 +11,9 @@ export const ErrorComponent = (props) => {
     }
 
     return (
-        <div className="error-container">
-            <h1 style={{color: "white"}}>{props.errorMessage}</h1>
-            {!props.home && <button onClick={handleClick}>Go Back</button>}
+        <div className={styles.error_container}>
+            <h1>{props.errorMessage}</h1>
+            {!props.home && <Button function={handleClick} text='Go Back'/>}
         </div>
     );
 }

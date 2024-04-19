@@ -1,0 +1,67 @@
+.contacto h1 {
+    color: var(--color-userTitles);
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .contacto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  
+  .contacto_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+  
+  
+  }
+  
+  .contacto_form {
+    padding: 80px;
+    border: 2px solid gray;
+    background-color:  var(--color-items-containers);
+    border-radius: 10px;
+    display: flex;
+    justify-content:  center;
+  }
+  
+  .contact_input{
+    width: 500px;
+  }
+  
+  .contact_input input {
+    width: 300px;
+    height: 50px;
+    align-self: self-end;
+    margin-left: 20px;
+  }
+  
+  .contact_input label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+  }
+  
+  .contacto input {
+    width: 400px;
+    margin-top: 3%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: x-large;
+  }
+  
+  .contacto textarea {
+    font-size: x-large;
+    margin-top: 3%;
+    width: 700px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+  }

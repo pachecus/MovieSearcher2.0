@@ -1,0 +1,7 @@
+.button_styles button {
+    font-size: x-large;
+    width: 200px;
+    height: 75px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: var(--color-buttons);
+}

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { fetchTrailer } from "../scripts/getTrailer";
 import { ItemPoster } from "../components/ItemPoster";
 import { ItemDetails } from "../components/ItemDetails";
+import styles from './Entertainment.module.css';
 
 export const Pelicula = () => {
   const [trailerUrl, setTrailerUrl] = useState(null); 
@@ -30,8 +31,8 @@ export const Pelicula = () => {
   if(!item) { return (<h1 style={{color: "white", fontSize: "xx-large"}}>Theres is no information available for this Movie</h1>);}
   else{
     return (
-      <div className="item-container">
-        <div className="item">
+      <div className={styles.item_container}>
+        <div className={styles.item}>
           <ItemPoster itemTitle={item.original_title} itemImage={`${baseURL}${posterSize}${item.poster_path}`}/>
           <ItemDetails year={item.release_date} genres={item.genres} rating={item.vote_average} languaje={item.original_language.toUpperCase()} synopsis={item.overview} trailerUrl={trailerUrl}/>
         </div>

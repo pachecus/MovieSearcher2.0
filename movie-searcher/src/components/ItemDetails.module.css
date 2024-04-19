@@ -15,3 +15,13 @@
     flex: 1;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.rating-container p {
+    margin-left: 20px;
+    float: left;
+  }
+    
+  .rating-container input {
+  margin-top: 5px; 
+  width: 100px; 
+  }

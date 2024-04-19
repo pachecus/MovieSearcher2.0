@@ -1,0 +1,11 @@
+.error_container {
+    color: white;
+    font-size: xx-large;
+    margin-left: 22%;
+    margin-right: 22%;
+    align-items: center;
+  }
+  
+  .error_container h1 {
+    color: white;
+  }

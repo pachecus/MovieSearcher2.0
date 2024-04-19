@@ -1,0 +1,12 @@
+.item_container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.item {
+    display: flex;
+    align-items: flex-start; 
+    max-width: 1500px; 
+    width: 100%; 
+}

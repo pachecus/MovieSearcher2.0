@@ -10,12 +10,12 @@
     background-color: var(--color-items-containers);
 }
 
-.img{
+.div img{
     width: 100%; 
     height: auto; 
 }
 
-.h1 {
+.div h1 {
     margin-bottom: 10px;
     margin-top: 0; 
 }
