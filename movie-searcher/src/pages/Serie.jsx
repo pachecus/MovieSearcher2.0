@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { fetchTrailer } from '../scripts/getTrailer'
-import { ItemPoster } from "../components/ItemPoster";
-import { ItemDetails } from "../components/ItemDetails";
-import styles from './Entertainment.module.css';
+import { EntertainmentContainer } from "../components/EntertainmentContainer";
 
 export const Serie = () => {
   const [trailerUrl, setTrailerUrl] = useState(null); 
@@ -31,12 +29,7 @@ export const Serie = () => {
   else{
 
     return (
-      <div className={styles.item_container}>
-        <div className={styles.item}>
-          <ItemPoster itemTitle={item.name} itemImage={`${baseURL}${posterSize}${item.poster_path}`}/>
-          <ItemDetails year={item.first_air_date} genres={item.genres} rating={item.vote_average} languaje={item.original_language.toUpperCase()} synopsis={item.overview} trailerUrl={trailerUrl}/>
-        </div>
-      </div>
+      <EntertainmentContainer itemTitle={item.name} itemImage={`${baseURL}${posterSize}${item.poster_path}`} year={item.first_air_date} genres={item.genres} rating={item.vote_average} languaje={item.original_language.toUpperCase()} synopsis={item.overview} trailerUrl={trailerUrl}/>
     );
   }
 }
