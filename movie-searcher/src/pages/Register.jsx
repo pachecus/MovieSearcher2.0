@@ -18,6 +18,11 @@ export const Register = () => {
                         </label>
                     </div>
                     <div>
+                        <label style={{color: "white"}}> Surname:         
+                            <input type="text"></input>
+                        </label>
+                    </div>
+                    <div>
                         <label style={{color: "white"}}> Mail:         
                             <input type="text"></input>
                         </label>
