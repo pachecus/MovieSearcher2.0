@@ -2,3 +2,6 @@ node_modules/
 .env
 loadData/
 server.js
+
+# Local Netlify folder
+.netlify
