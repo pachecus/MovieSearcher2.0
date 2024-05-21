@@ -1,6 +1,10 @@
 export async function getAnimesDataDB() {
     try {
-        const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/' + process.env.REACT_APP_ANIME_DIR);
+        // const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_ANIME_DIR);
+        const response = await fetch('/api/' + process.env.REACT_APP_ANIME_DIR);
+            // console.log('Request URL:', res.url); // Verificar la URL de la solicitud
+            // return response.json();
+        //   });
         if(!response.ok){
             throw new Error('Error en la respuesta del servidor');
         }
@@ -14,7 +18,8 @@ export async function getAnimesDataDB() {
 
 export async function getMoviesDataDB() {
     try {
-        const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/' + process.env.REACT_APP_PELICULA_DIR);
+        // const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_PELICULA_DIR);
+        const response = await fetch(`/api/` + process.env.REACT_APP_PELICULA_DIR);
         if(!response.ok){
             throw new Error('Error en la respuesta del servidor');
         }
@@ -28,7 +33,8 @@ export async function getMoviesDataDB() {
 
 export async function getSeriesDataDB() {
     try {
-        const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/' + process.env.REACT_APP_SERIE_DIR);
+        // const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_SERIE_DIR);
+        const response = await fetch(`/api/` + process.env.REACT_APP_SERIE_DIR);
         if(!response.ok){
             throw new Error('Error en la respuesta del servidor');
         }
@@ -42,7 +48,8 @@ export async function getSeriesDataDB() {
 
 export async function getItemFullDataDB(type, id) {
     try{        
-        const url = `http://${process.env.REACT_APP_DB_HOST}:${process.env.REACT_APP_DB_PORT}/${process.env.REACT_APP_ITEM_DIR}?type=${type}&id=${id}`;
+        // const url = `http://${process.env.REACT_APP_DB_HOST}:${process.env.REACT_APP_DB_PORT}/api/${process.env.REACT_APP_ITEM_DIR}?type=${type}&id=${id}`;
+        const url = `/api/${process.env.REACT_APP_ITEM_DIR}?type=${type}&id=${id}`;
         const response = await fetch(url);
         if(!response.ok){
             throw new Error('Error en la respuesta del servidor');
