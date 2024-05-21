@@ -46,9 +46,9 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to="/Home" />} /> {/* Para que la pagina de inicio sea Home */}
         <Route path="/Home" element={<Home />} />
         <Route path="/Contacto" element={<Contacto />} />
-        <Route path="/movie/:title" element={<Pelicula />} />
-        <Route path="/serie/:name" element={<Serie />} />
-        <Route path="/anime/:title" element={<Anime />} />
+        <Route path="/movie/:title/:id" element={<Pelicula />} />
+        <Route path="/serie/:name/:id" element={<Serie />} />
+        <Route path="/anime/:title/:id" element={<Anime />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Error" element={<ErrorComponent errorMessage="Ooops, where are you going?" />} />

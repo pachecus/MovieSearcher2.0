@@ -1,72 +1,56 @@
-const options = {
-    method: 'GET',
-    headers: {
-        accept: "application/json",
-        Authorization: process.env.REACT_APP_AUTH_TOKEN
-    }
-  };
-
-  export async function getTvShowsData() {
+export async function getAnimesDataDB() {
     try {
-        const showsResponse = await fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc', options);
-        const showsData = await showsResponse.json();
-
-        const genresResponse = await fetch('https://api.themoviedb.org/3/genre/tv/list?language=en', options);
-        const genresData = await genresResponse.json();
-
-        const genreMap = {};
-        genresData.genres?.forEach(genre => {
-            genreMap[genre.id] = genre.name;
-        });
-
-        const processedTvShowsData = showsData.results?.map(show => ({
-            ...show,
-            genres: show.genre_ids.map(genreId => genreMap[genreId]).filter(genre => !!genre)
-        })) ?? [];
-
-        return processedTvShowsData;
-    } catch (err) {
-        console.error(err);
-        return []; 
-    }
+        const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/' + process.env.REACT_APP_ANIME_DIR);
+        if(!response.ok){
+            throw new Error('Error en la respuesta del servidor');
+        }
+        const data = response.json();
+        return data;
+      } catch (error) {
+        console.error('Error al cargar los datos:', error);
+        throw error;
+      }
 }
 
-export async function getMoviesData() {
+export async function getMoviesDataDB() {
     try {
-
-        const moviesResponse = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options);
-        const moviesData = await moviesResponse.json();
-
-        const genresResponse = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options);
-        const genresData = await genresResponse.json();
-
-        const genreMap = {};
-        genresData.genres?.forEach(genre => {
-            genreMap[genre.id] = genre.name;
-        });
-
-        const processedMoviesData = moviesData.results?.map(movie => ({
-            ...movie,
-            genres: movie.genre_ids.map(genreId => genreMap[genreId]).filter(genre => !!genre)
-        })) ?? [];
-
-        return processedMoviesData;
-    } catch (err) {
-        console.error(err);
-        return []; 
-    }
+        const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/' + process.env.REACT_APP_PELICULA_DIR);
+        if(!response.ok){
+            throw new Error('Error en la respuesta del servidor');
+        }
+        const data = response.json();
+        return data;
+      } catch (error) {
+        console.error('Error al cargar los datos:', error);
+        throw error;
+      }
 }
-    
-export async function getAnimesData() {
-    const url = 'https://api.jikan.moe/v4/top/anime';
+
+export async function getSeriesDataDB() {
     try {
+        const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/' + process.env.REACT_APP_SERIE_DIR);
+        if(!response.ok){
+            throw new Error('Error en la respuesta del servidor');
+        }
+        const data = response.json();
+        return data;
+      } catch (error) {
+        console.error('Error al cargar los datos:', error);
+        throw error;
+      }
+}
+
+export async function getItemFullDataDB(type, id) {
+    try{        
+        const url = `http://${process.env.REACT_APP_DB_HOST}:${process.env.REACT_APP_DB_PORT}/${process.env.REACT_APP_ITEM_DIR}?type=${type}&id=${id}`;
         const response = await fetch(url);
-        const result = await response.json();
-
-        const animesData = result.data ?? [];
-        return animesData;
+        if(!response.ok){
+            throw new Error('Error en la respuesta del servidor');
+        }
+        const data = response.json();
+        return data;
     } catch (error) {
-        console.error(error);
-        return []; 
+        console.log('Error al cargar los datos', error);
+        throw error;
     }
 }
