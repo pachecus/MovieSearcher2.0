@@ -2,7 +2,7 @@ const fs = require('fs');
 const dotenv = require('dotenv');
 const path = require('path');
 
-// Cargar variables de entorno
+// Cargar variables de entorno desde el archivo .env
 dotenv.config();
 
 // Obtener las variables de entorno
@@ -16,7 +16,7 @@ if (!dbHost || !dbPort) {
 }
 
 // Ruta al archivo _redirects dentro de la carpeta public
-const redirectsPath = path.join(__dirname, 'public', '_redirects.txt');
+const redirectsPath = path.join(__dirname, 'public', '_redirects');
 
 // Leer el contenido del archivo _redirects
 let redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
@@ -26,6 +26,10 @@ redirectsContent = redirectsContent.replace('http://YOUR_IP_HERE:YOUR_PORT_HERE'
 
 // Escribir el contenido actualizado de vuelta al archivo _redirects
 fs.writeFileSync(redirectsPath, redirectsContent);
+
+console.log('Archivo _redirects actualizado con las variables de entorno.');
+
+
 // const fs = require('fs');
 // const dotenv = require('dotenv');
 
