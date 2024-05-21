@@ -1,10 +1,10 @@
 export async function getAnimesDataDB() {
     try {
         // const response = await fetch('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_ANIME_DIR);
-        const response = await fetch('/api/' + process.env.REACT_APP_ANIME_DIR);
-            // console.log('Request URL:', res.url); // Verificar la URL de la solicitud
-            // return response.json();
-        //   });
+        const response = await fetch('/api/' + process.env.REACT_APP_ANIME_DIR).then(res => {
+            console.log('Request URL:', res.url); // Verificar la URL de la solicitud
+            //return response.json();
+        });
         if(!response.ok){
             throw new Error('Error en la respuesta del servidor');
         }
