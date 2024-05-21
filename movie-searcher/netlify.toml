@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/api/*"
-  to = "http://${REACT_APP_DB_HOST}:${REACT_APP_DB_PORT}/:splat"
+  to = "http://167.62.133.94:80/:splat"
   status = 200

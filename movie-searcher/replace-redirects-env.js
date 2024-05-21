@@ -1,46 +1,46 @@
-// const fs = require('fs');
-// const dotenv = require('dotenv');
-// const path = require('path');
-
-// // Cargar variables de entorno
-// dotenv.config();
-
-// // Obtener las variables de entorno
-// const dbHost = process.env.REACT_APP_DB_HOST;
-// const dbPort = process.env.REACT_APP_DB_PORT;
-
-// // Verificar que las variables de entorno estén definidas
-// if (!dbHost || !dbPort) {
-//   console.error('REACT_APP_DB_HOST o REACT_APP_DB_PORT no están definidas en el archivo .env');
-//   process.exit(1);
-// }
-
-// // Ruta al archivo _redirects dentro de la carpeta public
-// const redirectsPath = path.join(__dirname, 'public', '_redirects.txt');
-
-// // Leer el contenido del archivo _redirects
-// let redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
-
-// // Reemplazar las variables de entorno en el contenido
-// redirectsContent = redirectsContent.replace('http://YOUR_IP_HERE:YOUR_PORT_HERE', `http://${dbHost}:${dbPort}`);
-
-// // Escribir el contenido actualizado de vuelta al archivo _redirects
-// fs.writeFileSync(redirectsPath, redirectsContent);
 const fs = require('fs');
 const dotenv = require('dotenv');
+const path = require('path');
 
-// Cargar variables de entorno desde el archivo .env
+// Cargar variables de entorno
 dotenv.config();
 
-// Leer el archivo netlify.toml
-let netlifyTomlContent = fs.readFileSync('netlify.toml', 'utf8');
+// Obtener las variables de entorno
+const dbHost = process.env.REACT_APP_DB_HOST;
+const dbPort = process.env.REACT_APP_DB_PORT;
 
-// Reemplazar las variables de entorno con sus valores
-netlifyTomlContent = netlifyTomlContent.replace(/\${(.*?)}/g, (match, key) => {
-  return process.env[key] || match;
-});
+// Verificar que las variables de entorno estén definidas
+if (!dbHost || !dbPort) {
+  console.error('REACT_APP_DB_HOST o REACT_APP_DB_PORT no están definidas en el archivo .env');
+  process.exit(1);
+}
 
-// Escribir el archivo netlify.toml con las variables de entorno reemplazadas
-fs.writeFileSync('netlify.toml', netlifyTomlContent);
+// Ruta al archivo _redirects dentro de la carpeta public
+const redirectsPath = path.join(__dirname, 'public', '_redirects.txt');
 
-console.log('Archivo netlify.toml actualizado con las variables de entorno.');
+// Leer el contenido del archivo _redirects
+let redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
+
+// Reemplazar las variables de entorno en el contenido
+redirectsContent = redirectsContent.replace('http://YOUR_IP_HERE:YOUR_PORT_HERE', `http://${dbHost}:${dbPort}`);
+
+// Escribir el contenido actualizado de vuelta al archivo _redirects
+fs.writeFileSync(redirectsPath, redirectsContent);
+// const fs = require('fs');
+// const dotenv = require('dotenv');
+
+// // Cargar variables de entorno desde el archivo .env
+// dotenv.config();
+
+// // Leer el archivo netlify.toml
+// let netlifyTomlContent = fs.readFileSync('netlify.toml', 'utf8');
+
+// // Reemplazar las variables de entorno con sus valores
+// netlifyTomlContent = netlifyTomlContent.replace(/\${(.*?)}/g, (match, key) => {
+//   return process.env[key] || match;
+// });
+
+// // Escribir el archivo netlify.toml con las variables de entorno reemplazadas
+// fs.writeFileSync('netlify.toml', netlifyTomlContent);
+
+// console.log('Archivo netlify.toml actualizado con las variables de entorno.');
