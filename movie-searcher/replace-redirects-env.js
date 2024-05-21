@@ -15,8 +15,8 @@ if (!dbHost || !dbPort) {
   process.exit(1);
 }
 
-// Ruta al archivo _redirects dentro de la carpeta public
-const redirectsPath = path.join(__dirname, 'public', '_redirects');
+// Ruta al archivo _redirects en la raíz del proyecto
+const redirectsPath = path.join(__dirname, '_redirects');
 
 // Leer el contenido del archivo _redirects
 let redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
@@ -28,6 +28,7 @@ redirectsContent = redirectsContent.replace('http://YOUR_IP_HERE:YOUR_PORT_HERE'
 fs.writeFileSync(redirectsPath, redirectsContent);
 
 console.log('Archivo _redirects actualizado con las variables de entorno.');
+
 
 
 // const fs = require('fs');
