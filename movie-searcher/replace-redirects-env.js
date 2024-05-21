@@ -29,6 +29,20 @@ fs.writeFileSync(redirectsPath, redirectsContent);
 
 console.log('Archivo _redirects actualizado con las variables de entorno.');
 
+// Copiar el archivo _redirects al directorio build
+const buildDir = path.join(__dirname, 'build');
+const buildRedirectsPath = path.join(buildDir, '_redirects');
+
+// Verificar si el directorio build existe, si no, crearlo
+if (!fs.existsSync(buildDir)) {
+  fs.mkdirSync(buildDir);
+}
+
+// Copiar el archivo _redirects al directorio build
+fs.copyFileSync(redirectsPath, buildRedirectsPath);
+
+console.log('Archivo _redirects copiado al directorio build.');
+
 
 
 // const fs = require('fs');
