@@ -16,7 +16,7 @@ if (!dbHost || !dbPort) {
 }
 
 // Ruta al archivo _redirects en la raíz del proyecto
-const redirectsPath = path.join(__dirname, '_redirects');
+const redirectsPath = path.join(__dirname, 'public', '_redirects');
 
 // Leer el contenido del archivo _redirects
 let redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
