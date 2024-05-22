@@ -72,8 +72,9 @@ import axios from 'axios';
 
 export async function getAnimesDataDB() {
     try {
-        const response = await axios.get(`/api/${process.env.REACT_APP_ANIME_DIR}`);
-        console.log('Request URL:', response.config.url);
+        const response = await axios.get(`/api/${process.env.REACT_APP_ANIME_DIR}`).then(res => {
+            console.log('Request URL:', res.url);
+        });
         
         if (!response.status === 200) {
             throw new Error('Error en la respuesta del servidor');
