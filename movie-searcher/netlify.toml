@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://${REACT_APP_DB_HOST}:${REACT_APP_DB_PORT}/:splat"
+  status = 301
