@@ -5,7 +5,3 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: var(--color-buttons);
 }
-
-.button_styles button:hover {
-    background-color: lightgray;
-}

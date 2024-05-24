@@ -1,62 +1,72 @@
-import axios from 'axios';
+const options = {
+    method: 'GET',
+    headers: {
+        accept: "application/json",
+        Authorization: process.env.REACT_APP_AUTH_TOKEN
+    }
+  };
 
-export async function getAnimesDataDB() {
+  export async function getTvShowsData() {
     try {
-        const response = await axios.get('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_ANIME_DIR);
-        
-        if (!response.status === 200) {
-            throw new Error('Error en la respuesta del servidor');
-        }
+        const showsResponse = await fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc', options);
+        const showsData = await showsResponse.json();
 
-        return response.data;
-    } catch (error) {
-        console.error('Error al cargar los datos:', error);
-        throw error;
+        const genresResponse = await fetch('https://api.themoviedb.org/3/genre/tv/list?language=en', options);
+        const genresData = await genresResponse.json();
+
+        const genreMap = {};
+        genresData.genres?.forEach(genre => {
+            genreMap[genre.id] = genre.name;
+        });
+
+        const processedTvShowsData = showsData.results?.map(show => ({
+            ...show,
+            genres: show.genre_ids.map(genreId => genreMap[genreId]).filter(genre => !!genre)
+        })) ?? [];
+
+        return processedTvShowsData;
+    } catch (err) {
+        console.error(err);
+        return []; 
     }
 }
 
-export async function getMoviesDataDB() {
+export async function getMoviesData() {
     try {
-        const response = await axios.get('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_PELICULA_DIR);
 
-        if (!response.status === 200) {
-            throw new Error('Error en la respuesta del servidor');
-        }
+        const moviesResponse = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options);
+        const moviesData = await moviesResponse.json();
 
-        return response.data;
-    } catch (error) {
-        console.error('Error al cargar los datos:', error);
-        throw error;
+        const genresResponse = await fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options);
+        const genresData = await genresResponse.json();
+
+        const genreMap = {};
+        genresData.genres?.forEach(genre => {
+            genreMap[genre.id] = genre.name;
+        });
+
+        const processedMoviesData = moviesData.results?.map(movie => ({
+            ...movie,
+            genres: movie.genre_ids.map(genreId => genreMap[genreId]).filter(genre => !!genre)
+        })) ?? [];
+
+        return processedMoviesData;
+    } catch (err) {
+        console.error(err);
+        return []; 
     }
 }
-
-export async function getSeriesDataDB() {
+    
+export async function getAnimesData() {
+    const url = 'https://api.jikan.moe/v4/top/anime';
     try {
-        const response = await axios.get('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_SERIE_DIR);
+        const response = await fetch(url);
+        const result = await response.json();
 
-        if (!response.status === 200) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-
-        return response.data;
+        const animesData = result.data ?? [];
+        return animesData;
     } catch (error) {
-        console.error('Error al cargar los datos:', error);
-        throw error;
-    }
-}
-
-export async function getItemFullDataDB(type, id) {
-    try {
-        const url = `http://${process.env.REACT_APP_DB_HOST}:${process.env.REACT_APP_DB_PORT}/api/${process.env.REACT_APP_ITEM_DIR}?type=${type}&id=${id}`;
-        const response = await axios.get(url);
-
-        if (!response.status === 200) {
-            throw new Error('Error en la respuesta del servidor');
-        }
-
-        return response.data;
-    } catch (error) {
-        console.error('Error al cargar los datos:', error);
-        throw error;
+        console.error(error);
+        return []; 
     }
 }

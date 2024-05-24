@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ErrorComponent } from "./ErrorPage";
-import { getAnimesDataDB, getMoviesDataDB, getSeriesDataDB } from '../scripts/getEntertainment';
+import { getTvShowsData, getMoviesData, getAnimesData } from '../scripts/getEntertainment';
 import { ItemHomePoster } from "../components/ItemHomePoster";
 import { FilterAndSearchBar } from "../components/FilterAndSearchBar";
 import styles from './Home.module.css';
@@ -19,15 +19,12 @@ export const Home = () => {
     useEffect(() => {
         async function getData() {
             try{
-            const AnimesDataDB = await getAnimesDataDB();
-            const MoviesDataDB = await getMoviesDataDB();
-            const SeriesDataDB = await getSeriesDataDB();
-            setTvShowsData(SeriesDataDB.map(tvShow => ({ ...tvShow, tipo: 2 }))); // 2 son las Series
-            setMoviesData(MoviesDataDB.map(movie => ({ ...movie, tipo: 1 }))); // 1 son las Peliculas
-            setAnimesData(AnimesDataDB.map(anime => ({ ...anime, tipo: 3 }))); // 3 son los Animes
+            setTvShowsData(await getTvShowsData());
+            setMoviesData(await getMoviesData());
+            setAnimesData(await getAnimesData());
             setDataLoaded(true);
             }catch(error){
-                console.error('Error al cargar las peliculas, series y animes:', error);
+                console.error('Error al cargar el tráiler:', error);
             }
         }
         getData();
@@ -41,8 +38,8 @@ export const Home = () => {
     const getSortedData = () => {
         const combinedData = [...moviesData, ...tvShowsData, ...animesData];
         const sortedData = combinedData.sort((a, b) => {
-            const titleA = a.titulo;
-            const titleB = b.titulo;
+            const titleA = a.title || a.name || a.title_english; 
+            const titleB = b.title || b.name || b.title_english;
             return titleA.localeCompare(titleB);
         });
         return sortedData;
@@ -87,10 +84,12 @@ export const Home = () => {
             {
             itemsList
                     .filter(item =>
-                        (item.titulo && item.titulo.toLowerCase().includes(searchedItem.toLowerCase())))
+                        (item.title && item.title.toLowerCase().includes(searchedItem.toLowerCase())) ||
+                        (item.name && item.name.toLowerCase().includes(searchedItem.toLowerCase()))
+                    )
                     .slice(0, itemsMostradosActualmente)
                     .map((item, index) => (
-                        <ItemHomePoster key={item.id} item={item}/>
+                        <ItemHomePoster item={item}/>
             ))}
             </div>
             <Button function={() => {setItemsMostradosActualmente(itemsMostradosActualmente + itemsMostrados)}} text="Show more"/>

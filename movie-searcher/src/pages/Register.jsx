@@ -13,12 +13,12 @@ export const Register = () => {
                 <form className={styles.register_form} onSubmit={handleForm}>
                     <h1>I'm building out this specific feature on the site, it'll be available shortly.</h1>
                     {/* <div>
-                        <label style={{color: "white"}}> First name:         
+                        <label style={{color: "white"}}> Name:         
                             <input type="text"></input>
                         </label>
                     </div>
                     <div>
-                        <label style={{color: "white"}}> Last name:         
+                        <label style={{color: "white"}}> Surname:         
                             <input type="text"></input>
                         </label>
                     </div>

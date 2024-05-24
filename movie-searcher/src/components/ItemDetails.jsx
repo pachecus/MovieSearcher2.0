@@ -14,7 +14,7 @@ export const ItemDetails = (props) => {
         <div className={styles.item_details}>
             <div className={styles.item_info}>
                 <p>Year: {props.year}</p>
-                <p>Generes: {props.genres}</p> 
+                <p>Generes: { props.genres.join(', ') }</p> 
                 <p>Rating: {props.rating}</p>
                 <p>Language: {props.languaje}</p>
                 <p>Synopsis: {props.synopsis}</p>

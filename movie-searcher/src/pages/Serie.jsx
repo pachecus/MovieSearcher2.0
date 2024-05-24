@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
+import { fetchTrailer } from '../scripts/getTrailer'
 import { EntertainmentContainer } from "../components/EntertainmentContainer";
-import { getItemFullDataDB } from "../scripts/getEntertainment";
 
 export const Serie = () => {
-  const [data, setData] = useState(null);
+  const [trailerUrl, setTrailerUrl] = useState(null); 
+  const baseURL = 'https://image.tmdb.org/t/p/';
+  const posterSize = 'original'; 
+
   const location = useLocation();
+  const item = location.state?.item; 
 
   useEffect(() => {
-    const pathSegments = location.pathname.split('/');
-    const itemId = pathSegments[3];
-    const locadData = async () => {
-      setData(await getItemFullDataDB(2, itemId)); // 2 porque es Anime
-    }
-    locadData();
-  },[location.pathname])
+    const loadTrailer = async () => {
+      if (item) {
+        try {
+          const videoId = await fetchTrailer(2, item.id);
+          setTrailerUrl(videoId);
+        } catch (error) {
+          console.error('Error al cargar el tráiler:', error);
+        }
+      }
+    };
+    loadTrailer();
+  },[item])
 
-  if(!data) { return (<h1 style={{color: "white", fontSize: "xx-large"}}>Theres is no information available for this Show</h1>);}
+  if(!item) { return (<h1 style={{color: "white", fontSize: "xx-large"}}>Theres is no information available for this Show</h1>);}
   else{
+
     return (
-      <EntertainmentContainer itemTitle={data.titulo} itemImage={data.imagen} year={data.anio} genres={data.generos} rating={data.rating} languaje={data.lenguaje.toUpperCase()} synopsis={data.sinopsis} trailerUrl={data.trailer}/>
+      <EntertainmentContainer itemTitle={item.name} itemImage={`${baseURL}${posterSize}${item.poster_path}`} year={item.first_air_date} genres={item.genres} rating={item.vote_average} languaje={item.original_language.toUpperCase()} synopsis={item.overview} trailerUrl={trailerUrl}/>
     );
   }
 }

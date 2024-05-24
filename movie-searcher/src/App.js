@@ -11,8 +11,10 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { ErrorComponent } from './pages/ErrorPage';
 import { Mobile } from './pages/Mobile';
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
+  // const client = new QueryClient();
   let navegador = navigator.userAgent;
   if (navegador.match(/Android/i) || navegador.match(/webOS/i) || navegador.match(/iPhone/i) || navegador.match(/iPad/i) || navegador.match(/iPod/i) || navegador.match(/BlackBerry/i) || navegador.match(/Windows Phone/i)) {
     return(
@@ -23,9 +25,11 @@ function App() {
   }else{
     return (
       <div className="App">
+        {/* <QueryClientProvider client={client}> */}
           <Router>
             <AppRoutes />
           </Router>
+          {/* </QueryClientProvider> */}
       </div>
     );
   }
@@ -42,9 +46,9 @@ function AppRoutes() {
         <Route path="/" element={<Navigate to="/Home" />} /> {/* Para que la pagina de inicio sea Home */}
         <Route path="/Home" element={<Home />} />
         <Route path="/Contacto" element={<Contacto />} />
-        <Route path="/movie/:title/:id" element={<Pelicula />} />
-        <Route path="/serie/:name/:id" element={<Serie />} />
-        <Route path="/anime/:title/:id" element={<Anime />} />
+        <Route path="/movie/:title" element={<Pelicula />} />
+        <Route path="/serie/:name" element={<Serie />} />
+        <Route path="/anime/:title" element={<Anime />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Error" element={<ErrorComponent errorMessage="Ooops, where are you going?" />} />
@@ -54,4 +58,23 @@ function AppRoutes() {
   );
 }
 
+// function DetallePelicula() {
+//   const location = useLocation();
+//   const item = location.state?.item; 
+//   return <Pelicula infoPelicula={item} />;
+// }
+
+// function DetalleSerie() {
+//   const location = useLocation();
+//   const item = location.state?.item; 
+//   return <Serie infoSerie={item} />;
+// }
+
+// function DetalleAnime() {
+//   const location = useLocation();
+//   const item = location.state?.item; 
+//   return <Anime infoAnime={item} />;
+// }
+
 export default App;
+
