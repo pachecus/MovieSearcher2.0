@@ -1,9 +1,14 @@
 // import { Button } from '../components/Button';
 import styles from './Register.module.css';
+import { regitserUser } from '../scripts/userData.js';
 
 export const Register = () => {
     const handleForm = () => {
-
+        // if(passowrd === repeatedPassword){
+        //     regitserUser(nickname, password, nombre, apellido, correo);
+        // }else{
+        //     console.log('Las contraseñas no coinciden')
+        // }
     }
 
     return(
