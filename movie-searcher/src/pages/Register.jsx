@@ -1,7 +1,7 @@
 import { Button } from '../components/Button';
 import styles from './Register.module.css';
 import { registerUser, verifyUser } from '../scripts/userData.js';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const Register = () => {
     const [verificationError, setVerificationError] = useState("");
