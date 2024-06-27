@@ -1,10 +1,10 @@
 import { Button } from '../components/Button';
 import styles from './Register.module.css';
 import { registerUser, verifyUser } from '../scripts/userData.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Register = () => {
-    const [verificationError, setVerificationError] = useState("no-error");
+    const [verificationError, setVerificationError] = useState("");
 
     const handleForm = async (event) => {
         event.preventDefault();
@@ -29,35 +29,40 @@ export const Register = () => {
     
         if (verifyUser(userInfo, setVerificationError) !== 'no-errors') {
             return;
-        }
+        }else{
     
-        try {
-            userInfo = {
-                nickname: username,
-                password: password,
-                nombre: firstName,
-                apellido: lastName,
-                correo: email
-            };
+            try {
+                userInfo = {
+                    nickname: username,
+                    password: password,
+                    nombre: firstName,
+                    apellido: lastName,
+                    correo: email
+                };
 
-    
-            let response = await registerUser(userInfo);
-    
-            if (response === 'user_exists') {
-                setVerificationError('user-exists');
-                document.getElementById('verification').value = 'Ya existe un usuario con ese username, por favor elija otro'
-            } else if (response === 'user_registered_successfully') {
+                let response = await registerUser(userInfo);
+        
+                if (response === 'userName_exists') {
+                    setVerificationError('Ya existe un usuario con ese username, por favor elija otro');
+                } else if (response === 'userMail_exists') {
+                    setVerificationError('Ya existe una cuenta asociada con este mail')
+                }else if (response === 'user_registered_succesfully') {
 
-                document.getElementById('first-name').value = '';
-                document.getElementById('last-name').value = '';
-                document.getElementById('mail').value = '';
-                document.getElementById('username').value = '';
-                document.getElementById('password').value = '';
-                document.getElementById('repeated-password').value = '';
-                document.getElementById('verification').value = 'Su usuario se ha registrado correctamente'
+                    setVerificationError('Su usuario se ha registrado correctamente');
+                    document.getElementById('first-name').value = '';
+                    document.getElementById('last-name').value = '';
+                    document.getElementById('mail').value = '';
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+                    document.getElementById('repeated-password').value = '';
+                    setTimeout(() => { // Despues de 10 segundos desaparece el cartel ingreso correcto de usuario
+                        setVerificationError("");
+                    }, 10000);
+                }
+
+            } catch (error) {
+                console.error("Error al registrar usuario: ", error);
             }
-        } catch (error) {
-            console.error("Error al registrar usuario: ", error);
         }
     };
 
@@ -98,7 +103,14 @@ export const Register = () => {
                         </label>
                     </div>
                     <div>
-                        <label id='verification'>''</label>
+                    <label
+                        id='verification'
+                        className={`${styles.registerVerification} ${
+                            verificationError === 'Su usuario se ha registrado correctamente' ? styles.green : styles.red
+                        }`}
+                    >
+                        {verificationError}
+                    </label>
                     </div>
                     <Button text='Submit' function={handleForm} />
                 </form>

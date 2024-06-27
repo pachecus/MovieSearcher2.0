@@ -14,6 +14,7 @@
     margin-right: 20%;
     background-color: var(--color-items-containers);
     border-radius: 10px;
+    margin-bottom: 5%;
   }
   
   .register_form div{
@@ -32,4 +33,20 @@
     justify-content: space-between;
     margin-top: 20px;
     align-items: center;
+  }
+
+  .registerVerification {
+    color: greenyellow;
+    justify-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: xx-large;
+  }
+
+  .green {
+    color: green;
+  }
+  
+  .red {
+    color: red;
   }
