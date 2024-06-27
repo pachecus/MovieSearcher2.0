@@ -1,4 +1,4 @@
-Sitio Web: https://pachecus-moviesearcher.netlify.app
+Web Site: https://pachecus-moviesearcher.netlify.app
 
 # MovieSearcher2.0
 
