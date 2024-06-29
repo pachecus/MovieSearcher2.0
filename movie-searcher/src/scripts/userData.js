@@ -71,3 +71,24 @@ export function verifyUser(userInfo, setVerificationError) {
     setVerificationError('no-errors');
     return 'no-errors';
 }
+
+export async function loginUser(user) {
+    const {nickname, password} = user;
+    try {
+        const response = await axios.get('http://' + process.env.REACT_APP_DB_HOST+ ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_USER_LOGIN , {
+          params: {
+            nickname,
+            password
+          }  
+        });
+        
+        if (!response.status === 200) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+        console.log(response.data);
+        return response.data;
+    }catch (error){
+        console.error('Error al registrar a un usuario');
+        throw error;
+    }
+}

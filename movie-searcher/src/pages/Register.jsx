@@ -102,15 +102,15 @@ export const Register = () => {
                             <input type="password" id="repeated-password" name="repeated-password"  />
                         </label>
                     </div>
-                    <div>
-                    <label
-                        id='verification'
-                        className={`${styles.registerVerification} ${
-                            verificationError === 'Su usuario se ha registrado correctamente' ? styles.green : styles.red
-                        }`}
-                    >
-                        {verificationError}
-                    </label>
+                    <div className={styles.verificationContainer}>
+                        <label
+                            id='verification'
+                            className={`${styles.registerVerification} ${
+                                verificationError === 'Su usuario se ha registrado correctamente' ? styles.green : styles.red
+                            }`}
+                        >
+                            {verificationError}
+                        </label>
                     </div>
                     <Button text='Submit' function={handleForm} />
                 </form>
