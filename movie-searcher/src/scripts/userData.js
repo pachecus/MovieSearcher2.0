@@ -88,7 +88,46 @@ export async function loginUser(user) {
         console.log(response.data);
         return response.data;
     }catch (error){
-        console.error('Error al registrar a un usuario');
+        console.error('Error al iniciar sesion de un usuario');
+        throw error;
+    }
+}
+
+export async function getUserData(user) { 
+    try{
+        const response = await axios.get('http://' + process.env.REACT_APP_DB_HOST + ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_USER_DATA , {
+            params: {
+                user
+            }
+        });
+
+        if (!response.status === 200){
+            throw new Error('Error en la respuesta del servidor');
+        }
+        console.log(response.data);
+        return response.data;
+
+    }catch (error) {
+        console.error('Error al obtener informacion de un usuario');
+        throw error;
+    }
+}
+
+export async function getUserEntertainment(user) { 
+    try{
+        const response = await axios.get('http://' + process.env.REACT_APP_DB_HOST + ':' + process.env.REACT_APP_DB_PORT + '/api/' + process.env.REACT_APP_USER_ENTERTAINMENT, {
+            params: {
+                user
+            }
+        });
+
+        if (!response.status === 200){
+            throw new Error('Error en la respuesta del servidor');
+        }
+        console.log(response.data);
+        return response.data;
+    }catch (error) {
+        console.error('Error al obtener el entretenimiento de un usuario');
         throw error;
     }
 }

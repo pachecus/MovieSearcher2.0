@@ -2,8 +2,11 @@ import { Button } from '../components/Button';
 import styles from './Login.module.css';
 import { loginUser } from '../scripts/userData'; 
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../App';
 
 export const Login = () => {
+    const { user, setSession } = useContext(UserContext);
     const navigate = useNavigate();
     const handleForm = async (event) => {
         event.preventDefault();
@@ -23,9 +26,11 @@ export const Login = () => {
             if(response === 'user_not_exists'){
                 console.log("La contrasenia no coincide con el usuario ingresado")
             } else if (response === "user_exists") {
+
                 console.log("Ha iniciado sesion correctamente");
+                setSession(username)
                 setTimeout(() => { // Despues de 10 segundos desaparece el cartel ingreso correcto de usuario
-                    navigate('/');
+                    navigate(`/`);
                 }, 1000);
             }else{
                 console.error("ERROR");
