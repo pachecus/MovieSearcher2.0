@@ -6,7 +6,12 @@ import { UserContext } from '../App';
 
 export const NavBar = (props) => {
     const navigate = useNavigate();
-    const {user, setSession} = useContext(UserContext)
+    const {user, setSession} = useContext(UserContext);
+
+    const handleLogout = () => {
+        setSession(null);
+        sessionStorage.setItem("user", 'null');
+    }
 
     const handleClick = () => {
         navigate('/');
@@ -14,7 +19,8 @@ export const NavBar = (props) => {
     if(!props.showNavBar){
         return null;
     }
-    if (user == null){
+    const usuario = sessionStorage.getItem('user');
+    if (usuario === 'null'){
         return(
             <div className={styles.nav_bar}>
                 <div className={styles.navandlogo}>
@@ -44,8 +50,8 @@ export const NavBar = (props) => {
                         <Link to="Contacto" className={styles.nav_link}>Contact</Link> 
                     </div>
                     <div className={styles.user_nav_links}>
-                        <Link to={`/porfile/${user}`} className={styles.nav_link}>{user}</Link>
-                        <Link to={`/`} className={styles.nav_link} onClick={() => setSession(null)}>logout</Link>
+                        <Link to={`/profile/${user}`} className={styles.nav_link} >{user}</Link>
+                        <Link to={`/`} className={styles.nav_link} onClick={handleLogout}>logout</Link>
                     </div>
                 </div>
             </div>

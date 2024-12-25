@@ -125,6 +125,7 @@ export async function getUserEntertainment(user) {
             throw new Error('Error en la respuesta del servidor');
         }
         console.log(response.data);
+        console.log("getUserEntertainment AAAAAAAAAAAAAA");
         return response.data;
     }catch (error) {
         console.error('Error al obtener el entretenimiento de un usuario');

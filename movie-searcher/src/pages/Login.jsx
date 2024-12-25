@@ -22,16 +22,17 @@ export const Login = () => {
         }
         try{
             let response = await loginUser(userInfo);
-            //console.log('kahgsdfa    ', response);
             if(response === 'user_not_exists'){
                 console.log("La contrasenia no coincide con el usuario ingresado")
             } else if (response === "user_exists") {
 
                 console.log("Ha iniciado sesion correctamente");
-                setSession(username)
-                setTimeout(() => { // Despues de 10 segundos desaparece el cartel ingreso correcto de usuario
-                    navigate(`/`);
-                }, 1000);
+                setSession(username);
+                sessionStorage.setItem('user', username);
+                navigate(`/`);
+                // setTimeout(() => { // Despues de 10 segundos desaparece el cartel ingreso correcto de usuario
+                //     navigate(`/Home`);
+                // }, 1000);
             }else{
                 console.error("ERROR");
             }

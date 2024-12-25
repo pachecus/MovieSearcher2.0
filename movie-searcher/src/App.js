@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import './App.css';
 import { Home } from './pages/Home';
 import { Pelicula } from './pages/Pelicula';
@@ -15,9 +15,19 @@ import { User } from './pages/User';
 
 export const UserContext = createContext();
 
+
 function App() {
   let navegador = navigator.userAgent;
-  let [user, setSession] = useState(null) ;
+  let [user, setSession] = useState(null);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const userSession = sessionStorage.getItem('user');
+    if (userSession != 'null') {
+      setSession(userSession);
+    }
+  })
+
   const UserProvider = ({ children }) => (
     <UserContext.Provider value={{ user, setSession }}>
       {children}
@@ -48,7 +58,10 @@ function AppRoutes() {
   const location = useLocation();
   const showNavBar = !location.pathname.startsWith('/Error');
   const {user, setSession} = useContext(UserContext);
-  if (user == null) { // No hay usuario con sesion iniciada
+  console.log("Location:", location);
+  const usuario = sessionStorage.getItem('user');
+  if (user === null || usuario === 'null') { // No hay usuario con sesion iniciada
+    console.log("PORQUE ESTOY ACA?????????????");
     return (
       <>
         <NavBar showNavBar={showNavBar} />
@@ -67,7 +80,10 @@ function AppRoutes() {
       </>
     );
   }else{ // Hay un usuario con sesion iniciada
-    console.log("KASDFJHASKFKDJSAFLAF")
+    console.log("KASDFJHASKFKDJSAFLAF");
+    console.log(usuario);
+    console.log(`/profile/${usuario}`);
+
     return (
       <>
         <NavBar showNavBar={showNavBar} />
@@ -78,7 +94,8 @@ function AppRoutes() {
           <Route path="/movie/:title/:id" element={<Pelicula />} />
           <Route path="/serie/:name/:id" element={<Serie />} />
           <Route path="/anime/:title/:id" element={<Anime />} />
-          <Route path="/porfile/:user" element={<User />} />
+          {/* <Route path="/profile/:user" element={<User />} /> */}
+          <Route path={`/profile/${encodeURIComponent(usuario)}`} element={<User />} />
           <Route path="/logout/:user" element={<User />} />
           <Route path="/Error" element={<ErrorComponent errorMessage="Ooops, where are you going?" />} />
           <Route path="*" element={<Navigate to="/Error"/>}/>

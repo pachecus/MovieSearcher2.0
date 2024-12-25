@@ -19,13 +19,13 @@ export const Home = () => {
     useEffect(() => {
         async function getData() {
             try{
-            const AnimesDataDB = await getAnimesDataDB();
-            const MoviesDataDB = await getMoviesDataDB();
-            const SeriesDataDB = await getSeriesDataDB();
-            setTvShowsData(SeriesDataDB.map(tvShow => ({ ...tvShow, tipo: 2 }))); // 2 son las Series
-            setMoviesData(MoviesDataDB.map(movie => ({ ...movie, tipo: 1 }))); // 1 son las Peliculas
-            setAnimesData(AnimesDataDB.map(anime => ({ ...anime, tipo: 3 }))); // 3 son los Animes
-            setDataLoaded(true);
+                const AnimesDataDB = await getAnimesDataDB();
+                const MoviesDataDB = await getMoviesDataDB();
+                const SeriesDataDB = await getSeriesDataDB();
+                setTvShowsData(SeriesDataDB.map(tvShow => ({ ...tvShow, tipo: 2 }))); // 2 son las Series
+                setMoviesData(MoviesDataDB.map(movie => ({ ...movie, tipo: 1 }))); // 1 son las Peliculas
+                setAnimesData(AnimesDataDB.map(anime => ({ ...anime, tipo: 3 }))); // 3 son los Animes
+                setDataLoaded(true);
             }catch(error){
                 console.error('Error al cargar las peliculas, series y animes:', error);
             }
