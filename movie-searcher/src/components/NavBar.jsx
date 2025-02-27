@@ -20,7 +20,8 @@ export const NavBar = (props) => {
         return null;
     }
     const usuario = sessionStorage.getItem('user');
-    if (usuario === 'null'){
+    console.log('El usuario es:', usuario);
+    if (String(usuario) == 'null'){
         return(
             <div className={styles.nav_bar}>
                 <div className={styles.navandlogo}>

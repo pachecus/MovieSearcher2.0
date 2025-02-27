@@ -1,9 +1,11 @@
 
 
-export const userDataBox = (props) => {
+
+export const UserDataBox = (props) => {
+    console.log('HUH')
     return (
         <div>
-            <h1>Informacion del Usuario</h1>
+            <h1 style={{color: "white", fontSize: "xx-large"}}>Informacion del Usuario</h1>
             <p>Usuario: {props.nickname}</p>
             <p>Contraseña: {props.password}</p>
             <p>Nombre: {props.nombre}</p>

@@ -19,7 +19,7 @@ export const Anime = () => {
   if(!data) { return (<h1 style={{color: "white", fontSize: "xx-large"}}>Theres is no information available for this Anime</h1>);}
   else{
     return (
-      <EntertainmentContainer itemTitle={data.titulo} itemImage={data.imagen} year={data.anio} genres={data.generos} rating={data.rating} languaje={data.lenguaje.toUpperCase()} synopsis={data.sinopsis} trailerUrl={data.trailer}/>
+      <EntertainmentContainer entertainmentType={3} itemTitle={data.titulo} itemImage={data.imagen} year={data.anio} genres={data.generos} rating={data.rating} languaje={data.lenguaje.toUpperCase()} synopsis={data.sinopsis} trailerUrl={data.trailer}/>
     );
   }
 }

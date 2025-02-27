@@ -18,7 +18,7 @@ export const UserContext = createContext();
 
 function App() {
   let navegador = navigator.userAgent;
-  let [user, setSession] = useState(null);
+  let [user, setSession] = useState('null');
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {

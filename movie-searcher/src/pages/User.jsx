@@ -1,7 +1,7 @@
 import { UserContext } from "../App";
 import { useContext, useEffect, useState } from "react";
 import { getUserData, getUserEntertainment } from "../scripts/userData";
-import { userDataBox } from "../components/userDataBox";
+import { UserDataBox } from "../components/userDataBox";
 
 export const User = () => {
     const {user, setSession} = useContext(UserContext);
@@ -26,20 +26,12 @@ export const User = () => {
     const userAnimes = userEntertainment[0];
     const userSeries = userEntertainment[1];
     const userPeliculas = userEntertainment[2];
-    console.log(userData);
-    console.log("23974923842");
-    console.log(userData[0]);
-    console.log();
-    console.log("dataUE");
-    console.log(userEntertainment);
-    console.log(userEntertainment[0]);
-    console.log(userEntertainment[1]);
-    console.log(userEntertainment[2]);
+
     if(dataLoaded && userEntertainment != 'no-user-entertainment-found'){
         return(
             <div>
                 <div>
-                    <userDataBox nickname={userInfo.nickname} password={userInfo.password} nombre={userInfo.nombre} apellido={userInfo.nombre} correo={userInfo.correo}/>
+                    <UserDataBox nickname={userInfo.nickname} password={userInfo.password} nombre={userInfo.nombre} apellido={userInfo.nombre} correo={userInfo.correo}/>
                 </div>
                 <div>
                     <h1>Entretenimiento de Interes</h1>
@@ -59,7 +51,10 @@ export const User = () => {
             </div>
         );
     }else if(userEntertainment === 'no-user-entertainment-found'){
-        return( <h1>NO ENTERTAINMENT...YET</h1>)
+        console.log('AKJHSDFL;KASHKJLF;DASDF')
+        return( <UserDataBox nickname={userInfo.nickname} password={userInfo.password} nombre={userInfo.nombre} apellido={userInfo.nombre} correo={userInfo.correo}/>)
+                // <h1>NO ENTERTAINMENT...YET</h1> 
+                
     }else{
         return(<h1 style={{color: "white", fontSize: "xx-large"}}>Loading...</h1>);
     }
